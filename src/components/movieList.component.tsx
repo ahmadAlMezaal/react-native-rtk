@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { useDispatch } from 'react-redux';
 import { toggleFavorite } from '../features/movie.slice';
 import MovieCard from './movieCard.component';
 import { Movie } from '../types';
-import { RootState } from '../../store';
-import { availableMovies } from '../db/localdb';
 
-export const MoviesList: React.FC = () => {
+type Props = {
+    movies: Movie[];
+}
+
+export const MoviesList: React.FC<Props> = (props) => {
 
     const dispatch = useDispatch();
-    const favoriteMovies = useSelector((state: RootState) => state.movies.favoriteMovies);
-
-    const [activeTab, setActiveTab] = useState<string>('All');
 
     const handleToggleFavorite = (movie: Movie) => {
         dispatch(toggleFavorite(movie));
@@ -24,26 +23,11 @@ export const MoviesList: React.FC = () => {
         onToggleFavorite={handleToggleFavorite}
     />;
 
-    const displayedMovies = activeTab === 'All' ? availableMovies : Object.values(favoriteMovies);
 
     return <View style={styles.container}>
-        <View style={styles.tabsContainer}>
-            <Pressable
-                style={[styles.tab, activeTab === 'All' ? styles.activeTab : {}]}
-                onPress={() => setActiveTab('All')}
-            >
-                <Text style={styles.tabText}>Home</Text>
-            </Pressable>
 
-            <Pressable
-                style={[styles.tab, activeTab === 'Favorites' ? styles.activeTab : {}]}
-                onPress={() => setActiveTab('Favorites')}
-            >
-                <Text style={styles.tabText}>Favorite Movies</Text>
-            </Pressable>
-        </View>
         <FlatList
-            data={displayedMovies}
+            data={props.movies}
             style={styles.flatListStyle}
             keyExtractor={keyExtractor}
             renderItem={renderItem}
@@ -59,31 +43,6 @@ const styles = StyleSheet.create(
         },
         flatListStyle: {
             flex: 1,
-        },
-        tabsContainer: {
-            flexDirection: 'row',
-            justifyContent: 'center',
-            backgroundColor: '#f5f5f5',
-            borderBottomWidth: 1,
-            borderColor: '#e0e0e0',
-        },
-        tab: {
-            flex: 1,
-            paddingVertical: 10,
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderBottomWidth: 3,
-            borderColor: 'transparent',
-        },
-        activeTab: {
-            borderColor: '#007bff',
-        },
-        tabText: {
-            color: 'black',
-            fontWeight: '600',
-        },
-        buttonText: {
-            color: 'black',
         },
     }
 );

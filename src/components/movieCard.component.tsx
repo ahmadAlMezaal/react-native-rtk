@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Pressable, Image, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../store';
+import { RootState } from '../app/store';
 
 const MovieCard = ({ movie, onToggleFavorite }) => {
 
