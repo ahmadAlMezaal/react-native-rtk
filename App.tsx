@@ -3,9 +3,9 @@ import { StyleSheet, View } from 'react-native';
 
 import { Provider } from 'react-redux';
 import { store } from './store';
-import MoviesList from './src/components/movieList.component';
+import { MoviesList } from './src/components/movieList.component';
 
-const App = (): React.JSX.Element => {
+const App: React.FC = () => {
 
     return <View style={styles.container}>
         <Provider store={store}>
