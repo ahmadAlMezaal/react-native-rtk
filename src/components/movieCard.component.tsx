@@ -3,7 +3,7 @@ import { View, Text, Pressable, Image, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
 
-const MovieCard = ({ movie, onToggleFavorite }) => {
+export const MovieCard = ({ movie, onToggleFavorite }) => {
 
     const favoriteMovies = useSelector((state: RootState) => state.movies.favoriteMovies);
 
@@ -56,5 +56,3 @@ const styles = StyleSheet.create(
         },
     }
 );
-
-export default MovieCard;

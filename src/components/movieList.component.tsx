@@ -1,9 +1,9 @@
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { toggleFavorite } from '../features/movie.slice';
-import MovieCard from './movieCard.component';
+import { toggleFavorite } from '../features/movies.slice';
 import { Movie } from '../types';
+import { MovieCard } from './movieCard.component';
 
 type Props = {
     movies: Movie[];
@@ -25,7 +25,6 @@ export const MoviesList: React.FC<Props> = (props) => {
 
 
     return <View style={styles.container}>
-
         <FlatList
             data={props.movies}
             style={styles.flatListStyle}

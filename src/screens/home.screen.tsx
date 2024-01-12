@@ -4,22 +4,16 @@ import { MoviesList } from '../components/movieList.component';
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
 import { availableMovies } from '../db/localdb';
-import { ThemeSwitch } from '../components/notificationsSwitch.component';
 
 export const HomeScreen: React.FC = () => {
 
     const [activeTab, setActiveTab] = useState<string>('All');
 
-    const isDarkTheme = useSelector((state: RootState) => state.theme.isDarkTheme);
-
     const favoriteMovies = useSelector((state: RootState) => state.movies.favoriteMovies);
     const displayedMovies = activeTab === 'All' ? availableMovies : Object.values(favoriteMovies);
 
-    const backgroundColor = isDarkTheme ? '#505050' : '#FFFFFF';
 
-
-    return <View style={[styles.container, { backgroundColor }]}>
-        <ThemeSwitch />
+    return <View style={styles.container}>
         <View style={styles.tabsContainer}>
             <Pressable
                 style={[styles.tab, activeTab === 'All' ? styles.activeTab : {}]}
@@ -35,7 +29,7 @@ export const HomeScreen: React.FC = () => {
                 <Text style={styles.tabText}>Favorite Movies</Text>
             </Pressable>
         </View>
-        <MoviesList movies={displayedMovies} />
+        <MoviesList movies={displayedMovies} />n
     </View>;
 };
 
