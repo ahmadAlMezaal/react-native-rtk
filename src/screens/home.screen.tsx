@@ -29,7 +29,7 @@ export const HomeScreen: React.FC = () => {
                 <Text style={styles.tabText}>Favorite Movies</Text>
             </Pressable>
         </View>
-        <MoviesList movies={displayedMovies} />n
+        <MoviesList movies={displayedMovies} />
     </View>;
 };
 

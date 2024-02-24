@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { toggleFavorite } from '../features/movies.slice';
+import { toggleFavorite } from '../app/features/movies.slice';
 import { Movie } from '../types';
 import { MovieCard } from './movieCard.component';
 

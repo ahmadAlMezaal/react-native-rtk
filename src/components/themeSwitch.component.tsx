@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Switch, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../app/store';
-import { toggleTheme } from '../features/theme.slice';
+import { toggleTheme } from '../app/features/theme.slice';
 
 export const ThemeSwitch: React.FC = () => {
     const isDarkThemeApplied = useSelector((state: RootState) => state.theme.isDarkTheme);

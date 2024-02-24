@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Slices } from '../types';
+import { Slices } from '../../types';
 
 type ThemeState = {
     isDarkTheme: boolean;
